@@ -46,7 +46,9 @@ class BlogController < ApplicationController
   def end_of_block
     # formatter = Rouge::Formatters::HTMLInline.new('gruvbox')
     # formatter = Rouge::Formatters::HTMLInline.new(Rouge::Themes::Base16.mode(:dark).new)
-    formatter = Rouge::Formatters::HTMLInline.new(Rouge::Themes::ThankfulEyes.new)
+    # formatter = Rouge::Formatters::HTMLInline.new(Rouge::Themes::ThankfulEyes.new)
+    formatter = Rouge::Formatters::HTMLInline.new(Rouge::Themes::MulletTheme.new)
+
     lexer = Rouge::Lexer.find(@code_language) || Rouge::Lexers::PlainText
     highlighted_code = formatter.format(lexer.lex(@code_buffer))
 
