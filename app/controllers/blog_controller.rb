@@ -65,7 +65,11 @@ class BlogController < ApplicationController
 
   def format_line(line)
     line = line.strip
+    line = process_line_headers(line)
+    process_inline_elements(line)
+  end
 
+  def process_line_headers(line)
     # store in hash map of lambdas
     transformations = {
       /^### (.*)$/ => ->(match) { "<h3>#{process_inline_elements(match[1])}</h3>" },
@@ -79,8 +83,7 @@ class BlogController < ApplicationController
       return transform.call(line.match(regex)) if line.match?(regex)
     end
 
-    # Process inline elements for non-heading lines
-    process_inline_elements(line) + '<br>'
+    line
   end
 
   def process_inline_elements(text)
