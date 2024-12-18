@@ -64,14 +64,32 @@ class BlogController < ApplicationController
   end
 
   def format_line(line)
-    line
-      .gsub(/^# (.*?)$/, '<h1 class="size-lg">\1</h1>')
-      .gsub(/^## (.*?)$/, '<h2>\1</h2>')
-      .gsub(/^### (.*?)$/, '<h3>\1</h3>')
-      .gsub(/^\* (.*?)$/, '<li>\1</li>')
-      .gsub(/\*\*(.*?)\*\*/, '<strong>\1</strong>')
-      .gsub(/\*(.*?)\*/, '<em>\1</em>')
-      # .gsub(/`(.*?)`/, '<code>\1</code>')
-      .gsub(/\n/, '<br>')
+    line = line.strip
+
+    # store in hash map of lambdas
+    transformations = {
+      /^### (.*)$/ => ->(match) { "<h3>#{process_inline_elements(match[1])}</h3>" },
+      /^## (.*)$/ => ->(match) { "<h2>#{process_inline_elements(match[1])}</h2>" },
+      /^# (.*)$/ => ->(match) { "<h1 class=\"size-lg\">#{process_inline_elements(match[1])}</h1>" },
+      /^\* (.*)$/ => ->(match) { "<li>#{process_inline_elements(match[1])}</li>" },
+      /^- (.*)$/ => ->(match) { "<li>#{process_inline_elements(match[1])}</li>" }
+    }
+
+    transformations.each do |regex, transform|
+      return transform.call(line.match(regex)) if line.match?(regex)
+    end
+
+    # Process inline elements for non-heading lines
+    process_inline_elements(line) + '<br>'
+  end
+
+  def process_inline_elements(text)
+    text
+      .gsub(/__([^_]+?)__/, '<strong>\1</strong>')    # Bold using __
+      .gsub(/\*\*([^*]+?)\*\*/, '<strong>\1</strong>') # Bold using **
+      .gsub(/_([^_]+?)_/, '<em>\1</em>')              # Italics using _
+      .gsub(/\*([^*]+?)\*/, '<em>\1</em>')            # Italics using *
+      .gsub(/`([^`]+?)`/, '<code>\1</code>')          # Inline code using single backticks
+      .gsub(/\[(.*?)\]\((.*?)\)/, '<a href="\2">\1</a>') # Links
   end
 end
