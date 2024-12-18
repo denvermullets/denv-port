@@ -1,4 +1,4 @@
-# Code Markdown
+# _Code Markdown_
 
 this is _italic?_
 This is a markdown file with codeblocks
@@ -17,25 +17,6 @@ module Rouge
   module Themes
     class MulletTheme < CSSTheme
       name 'mullet_theme'
-
-
-      # palette :background      => '#1b2932'   # Editor background
-      # palette :foreground      => '#c5cdd3'   # Default text color
-      # palette :cursor_fg       => '#b3d2e6'   # Cursor
-      # palette :selection_bg    => '#5998c077' # Selection background
-      # palette :comment_fg      => '#5e7887'   # Comments
-      # palette :keyword_fg      => '#c88da2'   # Keywords
-      # palette :variable_fg     => '#d3b692'   # Variables
-      # palette :annotation_fg   => '#be856f'   # Types, annotations
-      # palette :constant_fg     => '#a88c00'   # Constants
-      # palette :tag_fg          => '#c37455'   # Tags and entities
-      # palette :string_fg       => '#'   # Strings
-      # palette :string_interp_fg => '#3f8d6c'  # Interpolated strings
-      # palette :number_fg       => '#7068b1'   # Numbers
-      # palette :function_fg     => '#3f848d'   # Function names
-      # palette :support_fg      => '#72b7c0'   # Support classes, modules
-      # palette :misc_fg         => '#5998c0'   # Miscellaneous
-      # palette :invalid_fg      => '#b16a4e'   # Invalid/illegal text
 
       palette :black          => '#ffffdd'
       palette :bright_green   => '#72c09f'
