@@ -1,27 +1,24 @@
 # this controller realistically should only handle the rendering the pre-written markdown
 class BlogController < ApplicationController
-  def show
-    sanitized_path = sanitize_file_path(params[:file_path])
-    file_path = Rails.root.join('app', 'blog', "#{sanitized_path}.md")
+  BLOG_PATH = Rails.root.join('app', 'blog').freeze
 
-    if valid_file_path?(file_path)
-      @html_content = markdown_to_html(File.read(file_path))
+  def show
+    requested_file = "#{params[:file_path]}.md".to_s
+
+    # Get list of actual markdown files in blog directory
+    allowed_files = Dir.glob(BLOG_PATH.join('**/*.md'))
+                       .map { |f| Pathname.new(f).relative_path_from(BLOG_PATH).to_s }
+
+    if allowed_files.include?(requested_file)
+      full_path = BLOG_PATH.join(requested_file)
+      markdown = File.read(full_path)
+      @html_content = markdown_to_html(markdown)
     else
       render plain: '404 Not Found', status: :not_found
     end
   end
 
   private
-
-  def sanitize_file_path(file_path)
-    # normalize and resolve the path safely
-    Pathname.new(file_path).cleanpath.to_s
-  end
-
-  def valid_file_path?(file_path)
-    allowed_directory = Rails.root.join('app', 'blog').to_s
-    file_path.to_s.start_with?(allowed_directory) && File.exist?(file_path)
-  end
 
   def markdown_to_html(content)
     @in_code_block = false
@@ -36,9 +33,10 @@ class BlogController < ApplicationController
         if @in_code_block
           end_of_block
         else
-          # Start of code block
+          # start of code block
           @in_code_block = true
-          @code_language = line.strip[3..-1].strip || 'plaintext'
+          # strip the first 3 backticks
+          @code_language = line.strip[3..].strip || 'plaintext'
         end
       elsif @in_code_block
         # still in the block so add the line

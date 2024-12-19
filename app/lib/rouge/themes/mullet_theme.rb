@@ -48,10 +48,10 @@ module Rouge
             Keyword::Declaration,
             Keyword::Pseudo,
             Keyword::Reserved,
-            Keyword::Type,                    fg: :soft_cyan, bold: true
+            Keyword::Type, fg: :soft_cyan, bold: true
       style Keyword::Namespace,
             Operator::Word,
-            Operator,                         fg: :bright_pink, bold: true
+            Operator, fg: :bright_pink, bold: true
       style Literal::Number::Float,
             Literal::Number::Hex,
             Literal::Number::Integer::Long,
