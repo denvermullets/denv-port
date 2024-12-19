@@ -5,6 +5,7 @@ module Rouge
     class MulletTheme < CSSTheme
       name 'mullet_theme'
 
+      palette background:      '#f4f4f4'
       palette black:           '#1b2932'
       palette bright_green:    '#72c09f'
       palette bright_pink:     '#c88da2'
