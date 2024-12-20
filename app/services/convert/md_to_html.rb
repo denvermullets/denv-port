@@ -42,12 +42,13 @@ module Convert
     def end_of_block
       # formatter = Rouge::Formatters::HTMLInline.new(Rouge::Themes::Base16.mode(:dark).new)
       formatter = Rouge::Formatters::HTMLInline.new(Rouge::Themes::MulletTheme.new)
-
       lexer = Rouge::Lexer.find(@code_language) || Rouge::Lexers::PlainText
       highlighted_code = formatter.format(lexer.lex(@code_buffer))
 
+      # <pre style="background: #ffffdd;"><code class="language-#{@code_language}">#{@code_buffer}</code></pre>
+
       @formatted_content << <<~HTML
-        <div class="code-block">
+        <div class="code-block ">
           <pre><code class="language-#{@code_language}">#{highlighted_code}</code></pre>
         </div>
       HTML
