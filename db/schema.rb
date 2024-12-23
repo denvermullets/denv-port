@@ -10,20 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_19_150519) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_20_133725) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "projects", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.integer "order"
     t.boolean "visible"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "ip_address"
+    t.string "user_agent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name"
+    t.integer "order"
     t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -34,6 +45,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_19_150519) do
     t.string "title"
     t.boolean "visible"
     t.string "url"
+    t.integer "order"
     t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -41,12 +53,12 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_19_150519) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", null: false
+    t.string "email_address", null: false
     t.string "password_digest", null: false
-    t.datetime "confirmed_at"
-    t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
+
+  add_foreign_key "sessions", "users"
 end
