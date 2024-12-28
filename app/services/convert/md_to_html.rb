@@ -48,7 +48,7 @@ module Convert
       # <pre style="background: #ffffdd;"><code class="language-#{@code_language}">#{@code_buffer}</code></pre>
 
       @formatted_content << <<~HTML
-        <div class="code-block ">
+        <div class="code-block">
           <pre><code class="language-#{@code_language}">#{highlighted_code}</code></pre>
         </div>
       HTML
@@ -94,7 +94,7 @@ module Convert
         .gsub(/\*\*([^*]+?)\*\*/, '<strong>\1</strong>')
         .gsub(/_([^_]+?)_/, '<em>\1</em>')
         .gsub(/\*([^*]+?)\*/, '<em>\1</em>')
-        .gsub(/`([^`]+)`/, '<code class="p-4 rounded-sm text-vazBeige-50 bg-vazBlack-50">\1</code>')
+        .gsub(/`([^`]+)`/, '<code>\1</code>')
         .gsub(/\[(.*?)\]\((.*?)\)/, '<a href="\2">\1</a>')
     end
   end
