@@ -6,6 +6,7 @@ gem "pg", "~> 1.1"
 gem "propshaft"
 gem "puma", ">= 5.0"
 gem "rails", "~> 8.0.1"
+gem "revise_auth"
 gem 'rouge'
 gem "stimulus-rails"
 gem "tailwindcss-rails"
