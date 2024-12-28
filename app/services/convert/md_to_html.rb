@@ -75,8 +75,8 @@ module Convert
         /^### (.*)$/ => ->(match) { "<h3 class='text-vazBlue-700'>#{process_inline_elements(match[1])}</h3>" },
         /^## (.*)$/ => ->(match) { "<h2 class='text-vazBlue-700'>#{process_inline_elements(match[1])}</h2>" },
         /^# (.*)$/ => ->(match) { "<h1 class='text-vazBlue-700'>#{process_inline_elements(match[1])}</h1>" },
-        /^\* (.*)$/ => ->(match) { "<li>#{process_inline_elements(match[1])}</li>" },
-        /^- (.*)$/ => ->(match) { "<li>#{process_inline_elements(match[1])}</li>" }
+        /^\* (.*)$/ => ->(match) { "<li class='text-vazBlue-700'>#{process_inline_elements(match[1])}</li>" },
+        /^- (.*)$/ => ->(match) { "<li class='text-vazBlue-700'>#{process_inline_elements(match[1])}</li>" }
       }
 
       transformations.each do |regex, transform|
@@ -94,7 +94,7 @@ module Convert
         .gsub(/\*\*([^*]+?)\*\*/, '<strong>\1</strong>')
         .gsub(/_([^_]+?)_/, '<em>\1</em>')
         .gsub(/\*([^*]+?)\*/, '<em>\1</em>')
-        .gsub(/`([^`]+?)`/, '<code>\1</code>')
+        .gsub(/`([^`]+)`/, '<code class="p-4 rounded-sm text-vazBeige-50 bg-vazBlack-50">\1</code>')
         .gsub(/\[(.*?)\]\((.*?)\)/, '<a href="\2">\1</a>')
     end
   end
