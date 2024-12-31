@@ -1,8 +1,26 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing project</h1>
-
-  <%= render "form", project: @project %>
-
-  <%= link_to "Show this project", @project, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to projects", projects_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+<div class='flex items-start justify-center w-full min-h-screen pt-[160px]'>
+  <div class='w-full max-w-lg p-6 bg-vazBeige-50 rounded-xl text-vazBlack-50'>
+    <h1 class="text-2xl font-bold text-vazBlue-700">New project</h1>
+    <%= form_with model: @project do |form| %>
+      <div class='flex flex-col gap-4 mt-4'>
+        <div class='flex flex-row w-full space-x-4'>
+          <%= form.label :title, class: 'text-vazBlack-50 font-semibold' %>
+          <%= form.text_field :title, class: 'w-full rounded-md' %>
+        </div>
+        <div class='flex flex-row w-full space-x-4'>
+          <%= form.label :description, class: 'text-vazBlack-50 font-semibold' %>
+          <%= form.text_area :description, class: 'w-full rounded-md' %>
+        </div>
+        <div class='flex flex-row w-full space-x-4'>
+          <%= form.label :thumbnail, class: 'text-vazBlack-50 font-semibold' %>
+          <%= form.file_field :thumbnail %>
+        </div>
+        <div class='flex flex-row justify-end w-full'>
+        </div>
+        <div class='flex flex-row justify-end w-full'>
+          <%= form.submit 'Save', class: button_styles %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

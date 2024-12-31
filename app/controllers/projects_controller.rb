@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.all
+    @projects = Project.all.order(:order)
   end
 
   # GET /projects/1
@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
 
     if @project.save
-      redirect_to @project, notice: 'Project was successfully created.'
+      redirect_to root_path, notice: 'Project was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -52,6 +52,6 @@ class ProjectsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def project_params
-    params.fetch(:project, {})
+    params.require(:project).permit(:title, :description, :thumbnail)
   end
 end
