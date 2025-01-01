@@ -1,10 +1,12 @@
 <header class="fixed top-0 right-0 z-50 flex items-center justify-between w-full p-4 border-b border-vazBlue-300 bg-vazBeige-50">
-  <div class="flex items-center space-x-2">
-    <div class="w-10 h-10">
-      <%= image_tag 'beard_hat.svg', alt: 'Beard Hat Logo', class: 'h-full w-full' %>
+  <%= link_to root_path do %>
+    <div class="flex items-center space-x-2">
+      <div class="w-10 h-10">
+        <%= image_tag 'beard_hat.svg', alt: 'Beard Hat Logo', class: 'h-full w-full' %>
+      </div>
+      <h3 class="text-2xl font-medium text-vazBlue-700">Ryan Vaznis</h3>
     </div>
-    <h3 class="text-2xl font-medium text-vazBlue-700">Ryan Vaznis</h3>
-  </div>
+  <% end %>
   <div class="flex mr-2 space-x-8">
     <%= link_to "https://github.com/denvermullets", target: "_blank", rel: "noopener noreferrer", onclick: "logVisit('Click Link', 'click_link', 'https://github.com/denvermullets')" do %>
       <button class="text-sm font-normal text-vazBlue-700 hover:none focus:outline-none">

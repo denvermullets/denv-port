@@ -7,7 +7,7 @@
   <%= render 'hero' %>
   <div id="projects" class="min-w-full p-20">
     <% @projects.each_with_index do |project, index| %>
-      <%= render partial: 'projects/project_card', locals: { project:, right_side: index % 2 == 0 ? true : false  } %>
+      <%= render partial: 'projects/project_card', locals: { project:, right_side: index % 2 == 0 ? false : true  } %>
     <% end %>
   </div>
 </div>

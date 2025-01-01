@@ -31,7 +31,7 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   def update
     if @project.update(project_params)
-      redirect_to @project, notice: 'Project was successfully updated.', status: :see_other
+      redirect_to root_path, notice: 'Project was successfully updated.', status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
@@ -40,7 +40,7 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   def destroy
     @project.destroy!
-    redirect_to projects_path, notice: 'Project was successfully destroyed.', status: :see_other
+    redirect_to root_path, notice: 'Project was successfully destroyed.', status: :see_other
   end
 
   private
@@ -52,6 +52,6 @@ class ProjectsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def project_params
-    params.require(:project).permit(:title, :description, :thumbnail)
+    params.require(:project).permit(:title, :description, :thumbnail, :order)
   end
 end
