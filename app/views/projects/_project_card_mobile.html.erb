@@ -1,0 +1,14 @@
+<div class="flex flex-col gap-4">
+  <div class="flex flex-col mb-2">
+    <h1 class="text-2xl font-bold"><%= project_data[:title] %></h1>
+    <% if project_data[:freelance] %>
+      <h4 class="-mt-2 text-base font-semibold text-gray-600">Freelance Contract</h4>
+    <% end %>
+  </div>
+  <%= render partial: 'projects/project_image', locals: { image: project_data[:image] } %>
+  <p class="text-gray-800"><%= project_data[:description] %></p>
+  <%= render partial: 'projects/project_tags', locals: { tags: project_data[:tags], title: project_data[:title] } %>
+  <% if project_data[:links].any? %>
+    <%= render partial: 'projects/project_links', locals: { links: project_data[:links], title: project_data[:title] } %>
+  <% end %>
+</div>
