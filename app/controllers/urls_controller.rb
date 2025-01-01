@@ -52,6 +52,6 @@ class UrlsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def url_params
-    params.fetch(:url, {})
+    params.require(:url).permit(:title, :order, :project_id, :url)
   end
 end
