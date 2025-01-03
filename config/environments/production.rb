@@ -40,7 +40,7 @@ Rails.application.configure do
   # Change to "debug" to log everything (including potentially personally-identifiable information!)
   config.log_level = ENV.fetch('RAILS_LOG_LEVEL', 'info')
 
-  config.action_mailer.default_url_options = {host: "localhost", port: 3000}
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Prevent health checks from clogging up the logs.
   config.silence_healthcheck_path = '/up'
