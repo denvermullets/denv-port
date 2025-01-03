@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   # overriding default revise_auth routes so that i can disable paths
   # Registration
-  get 'sign_up', to: 'revise_auth/registrations#new', as: :sign_up
-  post 'sign_up', to: 'revise_auth/registrations#create'
+  # get 'sign_up', to: 'revise_auth/registrations#new', as: :sign_up
+  # post 'sign_up', to: 'revise_auth/registrations#create'
 
   get 'login', to: 'revise_auth/sessions#new'
   post 'login', to: 'revise_auth/sessions#create'
