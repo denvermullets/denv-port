@@ -1,7 +1,7 @@
 <div class="flex justify-center">
-  <div class="flex flex-row items-center justify-center max-w-screen-xl mt-24">
-    <div class="flex flex-col w-full gap-6 xl:w-1/2">
-      <h2 class="text-5xl italic font-extrabold text-vazBlue-700 ">
+  <div class="flex flex-row items-center justify-center max-w-screen-xl p-4 mt-6 xl:mt-24">
+    <div class="flex flex-col w-full gap-2 xl:gap-6 xl:w-1/2">
+      <h2 class="text-3xl italic font-extrabold xl:text-5xl text-vazBlue-700 ">
         Hi, I'm Ryan.
       </h2>
       <p class="font-light text-vazBlack-50">
@@ -10,16 +10,12 @@
         we build apps for some of the world's largest companies. By night I jam on side projects
         and/or freelance projects.
       </p>
-      <p class="italic font-medium text-vazBlue-700">
+      <p class="mt-4 italic font-medium xl:mt-0 text-vazBlue-700">
         Want to chat about a freelance project or something else? Drop me a line!
       </p>
-      <a href="mailto:ryan.vaznis@gmail.com">
-        <button class="<%= button_styles %>">
-          Contact Me
-        </button>
-      </a>
+      <%= link_to "Contact Me", "mailto:ryan.vaznis@gmail.com", class: button_styles + " xl:mt-0 mt-4" %>
     </div>
-    <div class="flex items-center justify-center w-1/4">
+    <div class="items-center justify-center hidden w-1/4 lg:flex">
       <div class="w-48 h-48">
         <%= image_tag 'beard_hat.svg', alt: 'Beard Hat Logo', class: 'h-full w-full' %>
       </div>

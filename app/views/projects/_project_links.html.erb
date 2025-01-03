@@ -1,4 +1,4 @@
-<div class="flex flex-row gap-4 mt-8">
+<div class="flex flex-row flex-wrap gap-4 mt-2 lg:mt-8">
   <% links.each do |link| %>
     <%= link_to link.title, link.url, class: button_styles %>
   <% end %>

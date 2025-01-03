@@ -1,27 +1,32 @@
-<div class="flex flex-row w-full gap-8 mb-12">
+<div class="flex flex-col w-full gap-8 mb-12 xl:flex-row">
   <% if project.thumbnail.attached? && !right_side %>
-    <div class="w-1/2 h-auto p-2 border rounded border-vazBlue-300 bg-vazBeige-50 ">
-      <%= image_tag project.thumbnail, class: "w-full" %>
+    <div class="hidden w-full xl:block xl:w-1/2">
+      <%= image_tag project.thumbnail, class: "w-full aspect-video p-2 border rounded border-vazBlue-300" %>
     </div>
   <% end %>
-  <div class="flex flex-col justify-center w-1/2 h-auto gap-4">
-    <h1 class="text-5xl italic font-bold text-vazBlue-700">
+  <div class="flex flex-col justify-center w-full gap-4 xl:w-1/2">
+    <h1 class="text-3xl italic font-bold xl:text-5xl text-vazBlue-700">
       <% if user_signed_in? %>
         <%= link_to project.title, edit_project_path(project) %>
       <% else %>
         <%= project.title %>
       <% end %>
     </h1>
+    <% if project.thumbnail.attached? %>
+      <div class="block w-full xl:w-1/2 xl:hidden">
+        <%= image_tag project.thumbnail, class: "w-full aspect-video p-2 border rounded border-vazBlue-300" %>
+      </div>
+    <% end %>
     <% if project.freelance %>
-      <h4 class="-mt-4 text-2xl font-light text-vazBlue-500">Freelance Contract</h4>
+      <h4 class="mt-4 text-2xl font-light text-vazBlue-500">Freelance Contract</h4>
     <% end %>
     <p class="font-light text-vazBlack-50"><%= project.description %></p>
     <%= render partial: 'projects/project_tags', locals: { tags: project.tags } %>
     <%= render partial: 'projects/project_links', locals: { links: project.urls} %>
   </div>
   <% if project.thumbnail.attached? && right_side %>
-    <div class="w-1/2 h-auto p-2 border rounded border-vazBlue-300 bg-vazBeige-50 ">
-      <%= image_tag project.thumbnail, class: "w-full aspect-video" %>
+    <div class="hidden w-full xl:block xl:w-1/2 ">
+      <%= image_tag project.thumbnail, class: "w-full border-vazBlue-300 aspect-video p-2 border rounded" %>
     </div>
   <% end %>
 </div>

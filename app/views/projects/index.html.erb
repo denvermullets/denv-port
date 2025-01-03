@@ -5,11 +5,11 @@
     </p>
   <% end %>
   <%= render 'hero' %>
-  <div class="flex flex-row items-center max-w-sm mx-12 mt-20 space-x-4">
-    <h1 class="italic font-light text-vazBlue-700">Projects</h1>
-    <hr class="flex-grow h-px border-0 bg-vazBlue-500 dark:bg-vazBlue-500">
+  <div class="flex flex-row items-center justify-end w-auto mx-4 mt-4 space-x-4 xl:justify-normal xl:max-w-sm xl:mx-12 xl:mt-20">
+    <h1 class="order-2 ml-4 italic font-light text-vazBlue-700 xl:order-none">Projects</h1>
+    <hr class="flex-grow order-1 h-px border-0 bg-vazBlue-500 dark:bg-vazBlue-500 xl:order-none">
   </div>
-  <div id="projects" class="min-w-full px-20 mt-12">
+  <div id="projects" class="min-w-full px-8 mt-4 xl:mt-12 xl:px-20">
     <% @projects.each_with_index do |project, index| %>
       <%= render partial: 'projects/project_card', locals: { project:, right_side: index % 2 == 0 ? false : true  } %>
     <% end %>
