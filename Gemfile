@@ -1,12 +1,12 @@
 source "https://rubygems.org"
 
 gem "aws-sdk-s3", require: false
-gem "bcrypt", "~> 3.1.7"
-gem "image_processing", "~> 1.2"
+gem "bcrypt", "~> 3.1.20"
+gem "image_processing", "~> 1.13.0"
 gem "importmap-rails"
-gem "pg", "~> 1.1"
+gem "pg", "~> 1.5.9"
 gem "propshaft"
-gem "puma", ">= 5.0"
+gem "puma", ">= 6.5.0"
 gem "rails", "~> 8.0.1"
 gem "revise_auth"
 gem 'rouge'
