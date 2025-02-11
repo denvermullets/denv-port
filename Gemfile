@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 gem "aws-sdk-s3", require: false
 gem "bcrypt", "~> 3.1.20"
-gem "image_processing", "~> 1.13.0"
+gem "image_processing", "~> 1.14.0"
 gem "importmap-rails"
 gem "pg", "~> 1.5.9"
 gem "propshaft"
