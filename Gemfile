@@ -7,7 +7,7 @@ gem "importmap-rails"
 gem "pg", "~> 1.5.9"
 gem "propshaft"
 gem "puma", ">= 6.5.0"
-gem "rails", "~> 8.0.1"
+gem "rails", "~> 8.0.2"
 gem "revise_auth"
 gem 'rouge'
 gem "stimulus-rails"
