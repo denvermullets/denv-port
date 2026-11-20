@@ -1,13 +1,13 @@
 source "https://rubygems.org"
 
 gem "aws-sdk-s3", require: false
-gem "bcrypt", "~> 3.1.20"
+gem "bcrypt", "~> 3.1.22"
 gem "image_processing", "~> 1.14.0"
 gem "importmap-rails"
-gem "pg", "~> 1.5.9"
+gem "pg", "~> 1.7.0"
 gem "propshaft"
-gem "puma", ">= 6.5.0"
-gem "rails", "~> 8.0.1"
+gem "puma", ">= 8.1.2"
+gem "rails", "~> 8.1.4.1"
 gem "revise_auth"
 gem 'rouge'
 gem "stimulus-rails"

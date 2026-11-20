@@ -67,7 +67,7 @@ module Convert
       "#{line} <br>"
     end
 
-    # rubocop:disable Metrics/AbcSize
+    # rubocop:disable-next Metrics/AbcSize
     def process_line_headers(line)
       # store in hash map of lambdas
       transformations = {
@@ -85,7 +85,6 @@ module Convert
 
       line
     end
-    # rubocop:enable Metrics/AbcSize
 
     def process_inline_elements(text)
       text

@@ -3,7 +3,7 @@ class BlogController < ApplicationController
   BLOG_PATH = Rails.root.join('app', 'blog').freeze
 
   def show
-    requested_file = "#{params[:file_path]}.md".to_s
+    requested_file = "#{params[:file_path]}.md"
 
     # we want to restrict access to just files that exist
     allowed_files = Dir.glob(BLOG_PATH.join('**/*.md'))
